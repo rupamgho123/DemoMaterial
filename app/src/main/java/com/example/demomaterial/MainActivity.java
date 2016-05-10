@@ -117,13 +117,22 @@ public class MainActivity extends BaseActivity implements ActivityFragementInter
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                if(currentFragment.shouldShowNavigationView())
-                    drawerLayout.openDrawer(GravityCompat.START);  // OPEN DRAWER
-                else
-                    finish();
+                toggleDrawerLayout();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (!mDrawerToggle.isDrawerIndicatorEnabled()) {
+            super.onBackPressed();
+        } else if (drawerLayout != null) {
+            if (drawerLayout.isDrawerOpen(Gravity.LEFT)) drawerLayout.closeDrawer(Gravity.LEFT);
+            else {
+                super.onBackPressed();
+            }
+        }
     }
 
     @Override
