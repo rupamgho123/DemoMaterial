@@ -26,6 +26,7 @@
                 app:layout_collapseMode="pin">
             </android.support.v7.widget.Toolbar>
             <ImageView
+                android:id="@+id/image"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
                 android:layout_width="match_parent"
                 android:minHeight="?attr/actionBarSize"

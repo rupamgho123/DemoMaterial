@@ -33,7 +33,9 @@ public class Fragment2 extends BaseFragment {
         // Set a toolbar to replace the action bar.
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(Color.BLUE);
+        view.findViewById(R.id.image).setBackgroundColor(Color.BLUE);
         toolbar.setTitle("fragment 2");
+        toolbar.setTitleTextColor(Color.WHITE);
         AppCompatActivity act = (AppCompatActivity)getActivity();
         act.setSupportActionBar(toolbar);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
