@@ -31,7 +31,6 @@ public class Fragment1 extends BaseFragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         // Set a toolbar to replace the action bar.
-        Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
         toolbar.setBackgroundColor(Color.RED);
         view.findViewById(R.id.image).setBackgroundColor(Color.RED);
         toolbar.setTitle("fragment 1");
