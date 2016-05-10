@@ -28,6 +28,8 @@ public class MainActivity extends BaseActivity implements ActivityFragementInter
 
     private static DisplayMetrics displayMetrics;
 
+    private BaseFragment currentFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,11 +71,15 @@ public class MainActivity extends BaseActivity implements ActivityFragementInter
 
 
     public void openFragment1() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment, Fragment1.getInstance()).commit();
+        Fragment1 instance = Fragment1.getInstance();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment, instance).commit();
+        currentFragment = instance;
     }
 
     public void openFragment2() {
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment, Fragment2.getInstance()).commit();
+        Fragment2 instance = Fragment2.getInstance();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment, instance).commit();
+        currentFragment = instance;
     }
 
     @Override
@@ -111,7 +117,10 @@ public class MainActivity extends BaseActivity implements ActivityFragementInter
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()){
             case android.R.id.home:
-                drawerLayout.openDrawer(GravityCompat.START);  // OPEN DRAWER
+                if(currentFragment.shouldShowNavigationView())
+                    drawerLayout.openDrawer(GravityCompat.START);  // OPEN DRAWER
+                else
+                    finish();
                 return true;
         }
         return super.onOptionsItemSelected(item);
