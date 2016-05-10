@@ -101,6 +101,9 @@ public class MainActivity extends BaseActivity implements ActivityFragementInter
         });
 
         drawerLayout.setDrawerListener(mDrawerToggle);
+        mDrawerToggle.setDrawerIndicatorEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override
