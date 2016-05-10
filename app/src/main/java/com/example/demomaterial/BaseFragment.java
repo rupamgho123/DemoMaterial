@@ -13,6 +13,7 @@ import android.view.View;
 public abstract class BaseFragment extends Fragment {
 
     protected Toolbar toolbar;
+    private ActivityFragementInteractionListener listener;
 
     public boolean shouldShowNavigationView(){
         return true;
@@ -22,14 +23,13 @@ public abstract class BaseFragment extends Fragment {
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        ActivityFragementInteractionListener listener = (ActivityFragementInteractionListener)getActivity();
         listener.initToolBar(toolbar);
+        listener.lockOrUnlockDrawer(!shouldShowNavigationView());
     }
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        ActivityFragementInteractionListener listener = (ActivityFragementInteractionListener)getActivity();
-        listener.lockOrUnlockDrawer(!shouldShowNavigationView());
+        listener = (ActivityFragementInteractionListener)getActivity();
     }
 }
