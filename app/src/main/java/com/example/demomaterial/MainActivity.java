@@ -18,6 +18,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.os.Bundle;
 
 public class MainActivity extends BaseActivity {
 
@@ -81,9 +82,6 @@ public class MainActivity extends BaseActivity {
         int drawerWidth = displayMetrics.widthPixels - dpToPx(48);
         navigationView.setMinimumWidth(drawerWidth);
     }
-    private void openFragment1(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment,Fragment1.getInstance()).commit();
-    }
 
     public static int dpToPx(int dp) {
         float px = TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, displayMetrics);
@@ -93,9 +91,13 @@ public class MainActivity extends BaseActivity {
         return (int) px;
     }
 
-//    private void openFragment2(){
-//        getSupportFragmentManager().beginTransaction().replace(,Fragment1.getInstance()).commit();
-//    }
 
 
+    public void openFragment1(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment,Fragment1.getInstance()).commit();
+    }
+
+    public void openFragment2(){
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment,Fragment2.getInstance()).commit();
+    }
 }

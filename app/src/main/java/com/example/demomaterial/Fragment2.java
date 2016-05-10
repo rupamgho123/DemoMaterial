@@ -41,6 +41,13 @@ public class Fragment2 extends BaseFragment {
         LinearLayoutManager llm = new LinearLayoutManager(getContext());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
+        view.findViewById(R.id.fabButton).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity act = (MainActivity)getActivity();
+                act.openFragment1();
+            }
+        });
     }
 
     private class MainListHolder extends RecyclerView.ViewHolder{
