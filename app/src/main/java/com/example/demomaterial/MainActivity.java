@@ -20,13 +20,11 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.os.Bundle;
 
-public class MainActivity extends BaseActivity {
+public class MainActivity extends BaseActivity implements ActivityFragementInteractionListener {
 
-    private DrawerLayout drawerLayout;
-//    private ActionBarDrawerToggle mDrawerToggle;
+    private ActionBarDrawerToggle mDrawerToggle;
 
     private static DisplayMetrics displayMetrics;
-
 
 
     @Override
@@ -35,46 +33,22 @@ public class MainActivity extends BaseActivity {
         displayMetrics = getResources().getDisplayMetrics();
         setContentView(R.layout.base_layout);
         drawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-//        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, defaultToolbar, "Open Drawer", "Close Drawer") {
-//            public void onDrawerOpened(View drawerView) {
-//            }
-//
-//            @Override
-//            public void onDrawerClosed(View drawerView) {
-//            }
-//
-//            @Override
-//            public void onDrawerStateChanged(int newState) {
-//            }
-//        };
-//
-//        mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
-//                    onBackPressed();
-//                    return;
-//                }
-//                toggleDrawerLayout();
-//            }
-//        });
-
-//        drawerLayout.setDrawerListener(mDrawerToggle);
         drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.RIGHT);
+
         setupDrawerLayoutWidth(drawerLayout);
         openFragment1();
     }
 
-//    public void toggleDrawerLayout() {
-//        if (!mDrawerToggle.isDrawerIndicatorEnabled()) {
-//            onBackPressed();
-//        } else if (drawerLayout != null) {
-//            if (drawerLayout.isDrawerOpen(Gravity.LEFT)) drawerLayout.closeDrawer(Gravity.LEFT);
-//            else {
-//                drawerLayout.openDrawer(Gravity.LEFT);
-//            }
-//        }
-//    }
+    public void toggleDrawerLayout() {
+        if (!mDrawerToggle.isDrawerIndicatorEnabled()) {
+            onBackPressed();
+        } else if (drawerLayout != null) {
+            if (drawerLayout.isDrawerOpen(Gravity.LEFT)) drawerLayout.closeDrawer(Gravity.LEFT);
+            else {
+                drawerLayout.openDrawer(Gravity.LEFT);
+            }
+        }
+    }
 
 
     private void setupDrawerLayoutWidth(DrawerLayout drawerLayout) {
@@ -92,12 +66,51 @@ public class MainActivity extends BaseActivity {
     }
 
 
-
-    public void openFragment1(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment,Fragment1.getInstance()).commit();
+    public void openFragment1() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment, Fragment1.getInstance()).commit();
     }
 
-    public void openFragment2(){
-        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment,Fragment2.getInstance()).commit();
+    public void openFragment2() {
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment, Fragment2.getInstance()).commit();
+    }
+
+    @Override
+    public void initToolBar(Toolbar toolbar) {
+        mDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name) {
+            public void onDrawerOpened(View drawerView) {
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+            }
+
+            @Override
+            public void onDrawerStateChanged(int newState) {
+            }
+        };
+
+        mDrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (getSupportFragmentManager().getBackStackEntryCount() == 1) {
+                    onBackPressed();
+                    return;
+                }
+                toggleDrawerLayout();
+            }
+        });
+
+        drawerLayout.setDrawerListener(mDrawerToggle);
+    }
+
+    @Override
+    public void lockOrUnlockDrawer(boolean doLock) {
+        if(drawerLayout!=null) {
+            if (doLock) {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED, Gravity.LEFT);
+            } else {
+                drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED, Gravity.LEFT);
+            }
+        }
     }
 }
