@@ -18,13 +18,16 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.base_layout);
     }
 
     private void openFragment1(){
-        getSupportFragmentManager().beginTransaction().replace(,Fragment1.getInstance()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.contentFragment,Fragment1.getInstance()).commit();
     }
 
 //    private void openFragment2(){
 //        getSupportFragmentManager().beginTransaction().replace(,Fragment1.getInstance()).commit();
 //    }
+
+
 }
