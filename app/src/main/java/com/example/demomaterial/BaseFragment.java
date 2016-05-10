@@ -22,10 +22,7 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(shouldShowNavigationView()){
-
-        }else{
-
-        }
+        ActivityFragementInteractionListener listener = (ActivityFragementInteractionListener)getActivity();
+        listener.lockOrUnlockDrawer(!shouldShowNavigationView());
     }
 }
