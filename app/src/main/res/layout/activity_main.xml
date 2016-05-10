@@ -32,4 +32,8 @@
                 android:layout_height="192dp"/>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
+    <android.support.design.widget.FloatingActionButton android:layout_width="wrap_content"
+                                                        android:layout_height="wrap_content"
+                                                        app:layout_anchor="@+id/recycler_view"
+                                                        app:layout_anchorGravity="top|right|end"/>
 </android.support.design.widget.CoordinatorLayout>

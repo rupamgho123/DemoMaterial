@@ -15,10 +15,10 @@ import android.widget.TextView;
 /**
  * Created by rupam.ghosh on 10/05/16.
  */
-public class Fragment1 extends BaseFragment {
+public class Fragment2 extends BaseFragment {
 
-    public static Fragment1 getInstance(){
-        return new Fragment1();
+    public static Fragment2 getInstance(){
+        return new Fragment2();
     }
 
     @Nullable
@@ -32,8 +32,8 @@ public class Fragment1 extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         // Set a toolbar to replace the action bar.
         Toolbar toolbar = (Toolbar) view.findViewById(R.id.toolbar);
-        toolbar.setBackgroundColor(Color.RED);
-        toolbar.setTitle("fragment 1");
+        toolbar.setBackgroundColor(Color.BLUE);
+        toolbar.setTitle("fragment 2");
         AppCompatActivity act = (AppCompatActivity)getActivity();
         act.setSupportActionBar(toolbar);
         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
@@ -69,5 +69,10 @@ public class Fragment1 extends BaseFragment {
         public int getItemCount() {
             return 15;
         }
+    }
+
+    @Override
+    public boolean shouldShowNavigationView() {
+        return false;
     }
 }
