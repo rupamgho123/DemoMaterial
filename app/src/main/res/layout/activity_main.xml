@@ -18,6 +18,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
+            <ImageView
+                android:id="@+id/image"
+                app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
+                android:layout_width="match_parent"
+                android:minHeight="?attr/actionBarSize"
+                android:layout_height="192dp"/>
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
@@ -26,12 +32,6 @@
                 app:layout_scrollFlags="scroll|enterAlways"
                 app:layout_collapseMode="pin">
             </android.support.v7.widget.Toolbar>
-            <ImageView
-                android:id="@+id/image"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed|enterAlways"
-                android:layout_width="match_parent"
-                android:minHeight="?attr/actionBarSize"
-                android:layout_height="192dp"/>
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
     <android.support.design.widget.FloatingActionButton
