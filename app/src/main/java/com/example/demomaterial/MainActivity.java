@@ -19,6 +19,7 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.base_layout);
+        openFragment1();
     }
 
     private void openFragment1(){
